@@ -1,0 +1,23 @@
+.bg-images-cont {
+	position: relative;
+	width: 100%;
+	margin-bottom: 32px;
+}
+
+.bg-image {
+	width: 100%;
+	border-radius: 12px;
+}
+
+.bg-extra-image {
+	position: absolute;
+	top: 50%;
+	right: 240px;
+	transform: translateY(-50%);
+}
+
+.home-content {
+	display: flex;
+	gap: 24px;
+	padding: 0 40px;
+}
