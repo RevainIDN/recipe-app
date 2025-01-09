@@ -4,10 +4,10 @@ import './App.css'
 import HomePage from './pages/HomePage'
 import RecipePage from './pages/RecipePage'
 import NotFoundPage from './pages/NotFoundPage'
-import { MealCategories } from './types'
+import { MealCategory } from './types'
 
 export default function App() {
-  const [mealCategoriesList, setMealCategoriesList] = useState<MealCategories | null>(null);
+  const [mealCategoriesList, setMealCategoriesList] = useState<MealCategory | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {

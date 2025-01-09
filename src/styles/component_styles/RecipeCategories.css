@@ -13,12 +13,44 @@
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
+	max-height: 400px;
+	overflow-y: auto;
+}
+
+.categories-list:focus {
+	outline: none;
+}
+
+.categories-list::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+
+.categories-list::-webkit-scrollbar-thumb {
+	background-color: #394150;
+	border-radius: 10px;
+	border: 2px solid transparent;
+}
+
+.categories-list::-webkit-scrollbar-track {
+	background: transparent;
+	border-radius: 10px;
+}
+
+.categories-img {
+	position: absolute;
+	top: 50%;
+	left: -40px;
+	transform: translateY(-50%);
+	max-width: 86px;
+	border-radius: 8px;
 }
 
 .categories-item {
+	position: relative;
 	cursor: pointer;
 	width: 100%;
-	padding: 16px 12px 16px 42px;
+	padding: 16px 12px 16px 62px;
 	border-radius: 12px;
 	transition: 0.2s;
 }

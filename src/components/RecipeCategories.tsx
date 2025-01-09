@@ -1,16 +1,22 @@
 import '../styles/component_styles/RecipeCategories.css'
+import { MealCategory } from '../types'
 
-export default function RecipeCategories() {
+interface RecipeCategoriesProps {
+	mealCategoriesList: MealCategory | null,
+}
+
+export default function RecipeCategories({ mealCategoriesList }: RecipeCategoriesProps) {
 	return (
 		<div className='categories-cont'>
 			<h1 className='categories-title'>Categories</h1>
 			<ul className='categories-list'>
-				<li className='categories-item'>Beef</li>
-				<li className='categories-item'>Chicken</li>
-				<li className='categories-item'>Desert</li>
-				<li className='categories-item'>Lamb</li>
-				<li className='categories-item'>Miscellaneous</li>
-				<li className='categories-item'>Pasta</li>
+				{mealCategoriesList ? (
+					mealCategoriesList.categories.map(mealCategory => (
+						<li key={mealCategory.idCategory} className='categories-item'><img className='categories-img' src={mealCategory.strCategoryThumb} alt="Meal Logo" />{mealCategory.strCategory}</li>
+					))
+				) : (
+					<p>Categories were not found</p>
+				)}
 			</ul>
 		</div>
 	)

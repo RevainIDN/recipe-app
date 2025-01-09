@@ -1,10 +1,10 @@
 import '../styles/page_styles/HomePage.css'
 import RecipeCategories from '../components/RecipeCategories'
 import RecipeList from '../components/RecipeList'
-import { MealCategories } from '../types'
+import { MealCategory } from '../types'
 
 interface HomePageProps {
-	mealCategoriesList: MealCategories | null,
+	mealCategoriesList: MealCategory | null,
 }
 
 export default function HomePage({ mealCategoriesList }: HomePageProps) {
@@ -15,7 +15,9 @@ export default function HomePage({ mealCategoriesList }: HomePageProps) {
 				<img className='bg-extra-image' src="hero-text.png" alt="" />
 			</div>
 			<div className='home-content'>
-				<RecipeCategories />
+				<RecipeCategories
+					mealCategoriesList={mealCategoriesList}
+				/>
 				<RecipeList />
 			</div>
 		</>
