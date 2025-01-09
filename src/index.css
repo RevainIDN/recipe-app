@@ -1,0 +1,7 @@
+@import './styles/reset.css';
+
+:root {
+  font-family: Outfit;
+  color: #E5E7EB;
+  background-color: #0E1325;
+}
