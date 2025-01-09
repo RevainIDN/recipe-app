@@ -4,3 +4,7 @@ export interface MealCategories {
 	strCategoryDescription: string,
 	strCategoryThumb: string,
 }
+
+export interface MealCategory {
+	categories: MealCategories[],
+}
