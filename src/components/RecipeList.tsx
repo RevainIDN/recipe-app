@@ -1,6 +1,6 @@
 import '../styles/component_styles/RecipeList.css'
 import { useState } from 'react';
-import { FoodByCategory } from '../types'
+import { FoodByCategory, FoodByCategories } from '../types'
 import Filter from './Filter';
 import Pagination from './pagination'
 
@@ -12,6 +12,7 @@ export default function RecipeList({ foodByCategory }: RecipeListProps) {
 	const [recipesPerPage] = useState(9);
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const [userText, setUserText] = useState<string>('');
+	const [userSort, setUserSort] = useState<string | null>('');
 
 	const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const value = e.target.value;
@@ -28,6 +29,18 @@ export default function RecipeList({ foodByCategory }: RecipeListProps) {
 			const matchesText = repice.strMeal.toLowerCase().includes(userText.toLowerCase());
 			return matchesText;
 		})
+		.sort((a: FoodByCategories, b: FoodByCategories) => {
+			if (userSort === 'Id') {
+				return a.idMeal.localeCompare(b.idMeal);
+			}
+			if (userSort === 'Name') {
+				return a.strMeal.localeCompare(b.strMeal);
+			}
+			if (userSort === 'All') {
+				return 0;
+			}
+			return 0;
+		})
 	const currentCountry = filteredRepice.slice(firstRecipeIndex, lastRecipeIndex);
 	const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
@@ -36,6 +49,8 @@ export default function RecipeList({ foodByCategory }: RecipeListProps) {
 		<div className='recipe-cont'>
 			<Filter
 				handleInput={handleInput}
+				userSort={userSort}
+				setUserSort={setUserSort}
 			/>
 			<ul className='recipe-list'>
 				{currentCountry && currentCountry.length > 0 ? (

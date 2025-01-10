@@ -33,7 +33,8 @@
 	transform: translateY(-50%);
 }
 
-.recipe-btn-cont {
+.recipe-dropdown-cont {
+	cursor: pointer;
 	position: relative;
 }
 
@@ -49,4 +50,28 @@
 	top: 50%;
 	right: 18px;
 	transform: translateY(-55%);
+}
+
+.dropdown-list {
+	position: absolute;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	gap: 5px;
+	text-align: center;
+	right: 0;
+	bottom: -85px;
+	width: 100%;
+}
+
+.dropdown-item {
+	cursor: pointer;
+	width: 80%;
+	color: #0E1325;
+	background-color: #E5E7EB;
+	border-radius: 16px;
+}
+
+.dropdown-item:hover {
+	transform: scale(105%);
 }
