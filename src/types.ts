@@ -1,4 +1,4 @@
-interface MealCategories {
+export interface MealCategories {
 	idCategory: string,
 	strCategory: string,
 	strCategoryDescription: string,
@@ -9,7 +9,7 @@ export interface MealCategory {
 	categories: MealCategories[],
 }
 
-interface FoodByCategories {
+export interface FoodByCategories {
 	strMeal: string,
 	strMealThumb: string,
 	idMeal: string,
