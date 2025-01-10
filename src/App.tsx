@@ -22,7 +22,7 @@ export default function App() {
             setMealCategoriesList(data);
             localStorage.setItem('mealData', JSON.stringify(data));
           } catch (error) {
-            console.error('Ошибка при загрузке данных:', error)
+            console.error('Error loading data:', error)
           }
         }
       } catch (error) {
