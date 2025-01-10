@@ -6,11 +6,12 @@ import { MealCategory, FoodByCategory } from '../types'
 
 interface HomePageProps {
 	mealCategoriesList: MealCategory | null,
+	foodByCategory: FoodByCategory | null,
+	setFoodByCategory: React.Dispatch<React.SetStateAction<FoodByCategory | null>>,
 }
 
-export default function HomePage({ mealCategoriesList }: HomePageProps) {
+export default function HomePage({ mealCategoriesList, foodByCategory, setFoodByCategory }: HomePageProps) {
 	const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-	const [foodByCategory, setFoodByCategory] = useState<FoodByCategory | null>(null);
 
 	return (
 		<>

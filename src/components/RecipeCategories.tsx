@@ -16,6 +16,7 @@ export default function RecipeCategories({ mealCategoriesList, selectedCategory,
 
 	useEffect(() => {
 		const fetchData = async () => {
+			if (!selectedCategory) return;
 			try {
 				const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${selectedCategory}`);
 				const dataFoodByCategory = await response.json();
