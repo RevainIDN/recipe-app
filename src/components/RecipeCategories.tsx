@@ -1,6 +1,6 @@
 import '../styles/component_styles/RecipeCategories.css'
 import { MealCategory, FoodByCategory } from '../types'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 interface RecipeCategoriesProps {
 	mealCategoriesList: MealCategory | null,
@@ -10,8 +10,11 @@ interface RecipeCategoriesProps {
 }
 
 export default function RecipeCategories({ mealCategoriesList, selectedCategory, setSelectedCategory, setFoodByCategory }: RecipeCategoriesProps) {
+	const [selectedCategoryBtn, setSelectedCategoryBtn] = useState<string | null>(null);
+
 	const handleClickCategory = async (e: React.MouseEvent<HTMLElement>) => {
 		setSelectedCategory(e.currentTarget.getAttribute('data-category'));
+		setSelectedCategoryBtn(e.currentTarget.getAttribute('data-id'));
 	}
 
 	useEffect(() => {
@@ -36,8 +39,9 @@ export default function RecipeCategories({ mealCategoriesList, selectedCategory,
 					mealCategoriesList.categories.map(mealCategory => (
 						<li
 							key={mealCategory.idCategory}
-							className='categories-item'
+							className={`categories-item ${selectedCategoryBtn === mealCategory.idCategory ? 'categories-item--active' : ''}`}
 							data-category={mealCategory.strCategory}
+							data-id={mealCategory.idCategory}
 							onClick={handleClickCategory}
 						>
 							<img className='categories-img' src={mealCategory.strCategoryThumb} alt="Meal Logo" />
