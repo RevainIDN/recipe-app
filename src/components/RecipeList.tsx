@@ -11,19 +11,32 @@ interface RecipeListProps {
 export default function RecipeList({ foodByCategory }: RecipeListProps) {
 	const [recipesPerPage] = useState(9);
 	const [currentPage, setCurrentPage] = useState<number>(1);
-	console.log('RecipeList foodByCategory:', foodByCategory);
+	const [userText, setUserText] = useState<string>('');
+
+	const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const value = e.target.value;
+		setUserText(value);
+	}
+
 	const lastRecipeIndex = currentPage * recipesPerPage;
 	const firstRecipeIndex = lastRecipeIndex - recipesPerPage;
 	if (!foodByCategory?.meals || foodByCategory.meals.length === 0) {
 		return <p>No recipes available.</p>;
 	}
-	const currentCountry = foodByCategory?.meals.slice(firstRecipeIndex, lastRecipeIndex);
-
+	const filteredRepice = [...foodByCategory.meals]
+		.filter((repice) => {
+			const matchesText = repice.strMeal.toLowerCase().includes(userText.toLowerCase());
+			return matchesText;
+		})
+	const currentCountry = filteredRepice.slice(firstRecipeIndex, lastRecipeIndex);
 	const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
+
 
 	return (
 		<div className='recipe-cont'>
-			<Filter />
+			<Filter
+				handleInput={handleInput}
+			/>
 			<ul className='recipe-list'>
 				{currentCountry && currentCountry.length > 0 ? (
 					currentCountry.map(meal => (
@@ -33,13 +46,13 @@ export default function RecipeList({ foodByCategory }: RecipeListProps) {
 						</li>
 					))
 				) : (
-					<p>Categories were not found</p>
+					<div className='not-found-meals'>Categories were not found</div>
 				)}
 			</ul>
 			<Pagination
 				currentPage={currentPage}
 				recipesPerPage={recipesPerPage}
-				foodByCategory={foodByCategory}
+				filteredRepice={filteredRepice}
 				paginate={paginate}
 			/>
 		</div>

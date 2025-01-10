@@ -1,11 +1,15 @@
 import '../styles/component_styles/Filter.css'
 
-export default function Filter() {
+interface FilterProps {
+	handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void,
+}
+
+export default function Filter({ handleInput }: FilterProps) {
 	return (
 		<>
 			<div className='recipe-filters-cont'>
 				<div className='recipe-input-cont'>
-					<input className='recipe-input' type="text" placeholder='Search recipes and more...' />
+					<input className='recipe-input' type="text" placeholder='Search recipes and more...' onChange={handleInput} />
 					<img className='recipe-input-img' src="Search.svg" alt="Search" />
 				</div>
 				<div className='recipe-btn-cont'>

@@ -1,21 +1,21 @@
 import '../styles/component_styles/Pagination.css'
-import { FoodByCategory } from '../types'
+import { FoodByCategories } from '../types'
 
 interface PaginationProps {
 	currentPage: number,
 	recipesPerPage: number,
-	foodByCategory: FoodByCategory | null,
+	filteredRepice: FoodByCategories[] | null,
 	paginate: (pageNumber: number) => void,
 }
 
-export default function Pagination({ currentPage, recipesPerPage, foodByCategory, paginate }: PaginationProps) {
+export default function Pagination({ currentPage, recipesPerPage, filteredRepice, paginate }: PaginationProps) {
 	const pageNumbers = [];
 
-	if (!foodByCategory?.meals) {
+	if (!filteredRepice) {
 		return;
 	}
 
-	for (let i = 1; i <= Math.ceil(foodByCategory.meals.length / recipesPerPage); i++) {
+	for (let i = 1; i <= Math.ceil(filteredRepice.length / recipesPerPage); i++) {
 		pageNumbers.push(i);
 	}
 
