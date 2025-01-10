@@ -1,5 +1,5 @@
 import '../styles/page_styles/HomePage.css'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import RecipeCategories from '../components/RecipeCategories'
 import RecipeList from '../components/RecipeList'
 import { MealCategory, FoodByCategory } from '../types'

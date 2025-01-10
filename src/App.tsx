@@ -11,10 +11,6 @@ export default function App() {
   const [foodByCategory, setFoodByCategory] = useState<FoodByCategory | null>(null);
 
   useEffect(() => {
-    console.log('App: foodByCategory', foodByCategory);
-  }, [foodByCategory]);
-
-  useEffect(() => {
     const fetchData = async () => {
       try {
         const cachedCategories = localStorage.getItem('categoriesData');
