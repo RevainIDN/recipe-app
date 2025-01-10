@@ -62,3 +62,22 @@
 	grid-template-columns: repeat(3, 1fr);
 	gap: 32px;
 }
+
+.recipe-item {
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	background-color: #394150;
+	padding: 8px 8px 0 8px;
+	border-radius: 12px;
+}
+
+.recipe-img {
+	max-height: 220px;
+	border-radius: 12px;
+	object-fit: cover;
+}
+
+.recipe-title {
+	padding: 12px 4px;
+}
