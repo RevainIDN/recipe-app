@@ -39,6 +39,7 @@
 	height: 500px;
 	border-radius: 12px;
 	margin-bottom: 32px;
+	object-fit: cover;
 }
 
 .recipe-name {
@@ -100,4 +101,54 @@
 
 .instruction-step {
 	margin-bottom: 16px;
+}
+
+@media (max-width: 1024px) {
+	.recipe-page {
+		padding: 24px 32px;
+	}
+
+	.recipe-info {
+		max-width: 75%;
+	}
+
+	.recipe-fullsize-img {
+		height: auto;
+	}
+}
+
+@media (max-width: 640px) {
+	.recipe-page {
+		padding: 12px 12px;
+	}
+
+	.recipe-info {
+		max-width: 100%;
+	}
+}
+
+@media (max-width: 380px) {
+	.recipe-header {
+		justify-content: end;
+	}
+
+	.recipe-logo {
+		display: none;
+	}
+
+	.recipe-back-btn {
+		width: 100%;
+		padding: 8px 16px 8px 32px;
+	}
+
+	.recipe-back-btn::before {
+		left: 10px;
+	}
+
+	.recipe-add-info-cont {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.recipe-add-info {}
 }
