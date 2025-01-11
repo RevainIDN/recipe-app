@@ -1,4 +1,6 @@
 import '../styles/page_styles/HomePage.css'
+import bgImg from '/hero-image.jpg'
+import bgExtraImg from '/hero-text.png'
 import { useState } from 'react'
 import RecipeCategories from '../components/RecipeCategories'
 import RecipeList from '../components/RecipeList'
@@ -16,8 +18,8 @@ export default function HomePage({ mealCategoriesList, foodByCategory, setFoodBy
 	return (
 		<>
 			<div className='bg-images-cont'>
-				<img className='bg-image' src="hero-image.jpg" alt="background image" />
-				<img className='bg-extra-image' src="hero-text.png" alt="" />
+				<img className='bg-image' src={bgImg} alt="background image" />
+				<img className='bg-extra-image' src={bgExtraImg} alt="" />
 			</div>
 			<div className='home-content'>
 				<RecipeCategories
