@@ -1,5 +1,5 @@
 import '../styles/component_styles/RecipeList.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FoodByCategory, FoodByCategories } from '../types'
 import { useNavigate } from 'react-router-dom';
 import Filter from './Filter'
@@ -10,7 +10,7 @@ interface RecipeListProps {
 }
 
 export default function RecipeList({ foodByCategory }: RecipeListProps) {
-	const [recipesPerPage] = useState(9);
+	const [recipesPerPage, setRecipesPerPage] = useState<number>(9);
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const [userText, setUserText] = useState<string>('');
 	const [userSort, setUserSort] = useState<string | null>('Name');
@@ -25,6 +25,19 @@ export default function RecipeList({ foodByCategory }: RecipeListProps) {
 		const value = e.target.value;
 		setUserText(value);
 	};
+
+	useEffect(() => {
+		const updateRecipesPerPage = () => {
+			const width = window.innerWidth;
+			setRecipesPerPage(() => (width <= 1024 ? 6 : 9));
+		};
+
+		updateRecipesPerPage();
+
+		window.addEventListener('resize', updateRecipesPerPage);
+
+		return () => window.removeEventListener('resize', updateRecipesPerPage);
+	}, []);
 
 	const lastRecipeIndex = currentPage * recipesPerPage;
 	const firstRecipeIndex = lastRecipeIndex - recipesPerPage;
@@ -51,7 +64,6 @@ export default function RecipeList({ foodByCategory }: RecipeListProps) {
 	const currentRecipe = filteredRepice.slice(firstRecipeIndex, lastRecipeIndex);
 	const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
-
 	return (
 		<div className='recipe-cont'>
 			<Filter
@@ -71,15 +83,13 @@ export default function RecipeList({ foodByCategory }: RecipeListProps) {
 					<div className='not-found-meals'>Categories were not found</div>
 				)}
 			</ul>
-			{currentRecipe.length >= 9 ? (
+			{filteredRepice.length > recipesPerPage && (
 				<Pagination
 					currentPage={currentPage}
 					recipesPerPage={recipesPerPage}
 					filteredRepice={filteredRepice}
 					paginate={paginate}
 				/>
-			) : (
-				null
 			)}
 
 		</div>
