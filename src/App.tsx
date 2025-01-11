@@ -55,7 +55,7 @@ export default function App() {
         foodByCategory={foodByCategory}
         setFoodByCategory={setFoodByCategory}
       />} />
-      <Route path='/Recipe' element={<RecipePage />} />
+      <Route path='/recipe/:recipeName' element={<RecipePage />} />
       <Route path='*' element={<NotFoundPage />} />
     </Routes>
   )
