@@ -33,3 +33,22 @@
 	width: 100%;
 	font-size: 1.5rem;
 }
+
+@media (max-width: 1024px) {
+	.recipe-list {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 840px) {
+	.recipe-cont {
+		width: 100%;
+	}
+}
+
+
+@media (max-width: 640px) {
+	.recipe-list {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}

@@ -21,3 +21,49 @@
 	gap: 24px;
 	padding: 0 40px;
 }
+
+@media (max-width: 1024px) {
+	.bg-image {
+		height: 400px;
+		object-fit: cover;
+		object-position: 30%;
+	}
+
+	.bg-extra-image {
+		right: 80px;
+		height: 280px;
+	}
+
+	.home-content {
+		padding: 0 10px;
+	}
+}
+
+@media (max-width: 840px) {
+	.home-content {
+		flex-direction: column;
+	}
+}
+
+@media (max-width: 640px) {
+	.bg-image {
+		height: 450px;
+	}
+
+	.bg-extra-image {
+		right: 20px;
+		height: 200px;
+	}
+}
+
+@media (max-width: 350px) {
+	.bg-image {
+		height: 350px;
+	}
+
+	.bg-extra-image {
+		top: 70%;
+		right: 20px;
+		height: 150px;
+	}
+}

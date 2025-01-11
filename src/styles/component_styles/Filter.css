@@ -83,3 +83,19 @@
 .dropdown-item:hover {
 	transform: scale(105%);
 }
+
+@media (max-width: 640px) {
+	.recipe-filters-cont {
+		flex-direction: column;
+		align-items: end;
+		gap: 16px;
+	}
+
+	.recipe-input-cont {
+		width: 100%;
+	}
+
+	.dropdown-list {
+		bottom: -60px;
+	}
+}
