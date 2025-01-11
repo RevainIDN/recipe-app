@@ -44,7 +44,7 @@ export default function RecipeList({ foodByCategory }: RecipeListProps) {
 	if (!foodByCategory?.meals || foodByCategory.meals.length === 0) {
 		return <p>No recipes available.</p>;
 	}
-	const filteredRepice = [...foodByCategory.meals]
+	const filteredRecipe = [...foodByCategory.meals]
 		.filter((repice) => {
 			const matchesText = repice.strMeal.toLowerCase().includes(userText.toLowerCase());
 			return matchesText;
@@ -61,7 +61,7 @@ export default function RecipeList({ foodByCategory }: RecipeListProps) {
 			}
 			return 0;
 		})
-	const currentRecipe = filteredRepice.slice(firstRecipeIndex, lastRecipeIndex);
+	const currentRecipe = filteredRecipe.slice(firstRecipeIndex, lastRecipeIndex);
 	const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
 	return (
@@ -83,11 +83,11 @@ export default function RecipeList({ foodByCategory }: RecipeListProps) {
 					<div className='not-found-meals'>Categories were not found</div>
 				)}
 			</ul>
-			{filteredRepice.length > recipesPerPage && (
+			{filteredRecipe.length > recipesPerPage && (
 				<Pagination
 					currentPage={currentPage}
 					recipesPerPage={recipesPerPage}
-					filteredRepice={filteredRepice}
+					filteredRecipe={filteredRecipe}
 					paginate={paginate}
 				/>
 			)}

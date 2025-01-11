@@ -4,18 +4,18 @@ import { FoodByCategories } from '../types'
 interface PaginationProps {
 	currentPage: number,
 	recipesPerPage: number,
-	filteredRepice: FoodByCategories[] | null,
+	filteredRecipe: FoodByCategories[] | null,
 	paginate: (pageNumber: number) => void,
 }
 
-export default function Pagination({ currentPage, recipesPerPage, filteredRepice, paginate }: PaginationProps) {
+export default function Pagination({ currentPage, recipesPerPage, filteredRecipe, paginate }: PaginationProps) {
 	const pageNumbers = [];
 
-	if (!filteredRepice) {
+	if (!filteredRecipe) {
 		return;
 	}
 
-	for (let i = 1; i <= Math.ceil(filteredRepice.length / recipesPerPage); i++) {
+	for (let i = 1; i <= Math.ceil(filteredRecipe.length / recipesPerPage); i++) {
 		pageNumbers.push(i);
 	}
 
