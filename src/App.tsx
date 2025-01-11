@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage'
 import RecipePage from './pages/RecipePage'
 import NotFoundPage from './pages/NotFoundPage'
 import { MealCategory, FoodByCategory } from './types'
+import ScrollToTop from './components/ScrollToTop'
 
 export default function App() {
   const [mealCategoriesList, setMealCategoriesList] = useState<MealCategory | null>(null);
@@ -49,14 +50,17 @@ export default function App() {
   }, []);
 
   return (
-    <Routes>
-      <Route path='/' element={<HomePage
-        mealCategoriesList={mealCategoriesList}
-        foodByCategory={foodByCategory}
-        setFoodByCategory={setFoodByCategory}
-      />} />
-      <Route path='/recipe/:recipeName' element={<RecipePage />} />
-      <Route path='*' element={<NotFoundPage />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path='/' element={<HomePage
+          mealCategoriesList={mealCategoriesList}
+          foodByCategory={foodByCategory}
+          setFoodByCategory={setFoodByCategory}
+        />} />
+        <Route path='/recipe/:recipeName' element={<RecipePage />} />
+        <Route path='*' element={<NotFoundPage />} />
+      </Routes>
+    </>
   )
 }
