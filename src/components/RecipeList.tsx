@@ -1,8 +1,9 @@
 import '../styles/component_styles/RecipeList.css'
 import { useState } from 'react';
 import { FoodByCategory, FoodByCategories } from '../types'
-import Filter from './Filter';
-import Pagination from './pagination'
+import { useNavigate } from 'react-router-dom';
+import Filter from './Filter'
+import Pagination from './Pagination'
 
 interface RecipeListProps {
 	foodByCategory: FoodByCategory | null,
@@ -12,12 +13,18 @@ export default function RecipeList({ foodByCategory }: RecipeListProps) {
 	const [recipesPerPage] = useState(9);
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const [userText, setUserText] = useState<string>('');
-	const [userSort, setUserSort] = useState<string | null>('');
+	const [userSort, setUserSort] = useState<string | null>('Name');
+
+	const navigate = useNavigate();
+
+	const handleRecipeClick = (recipeId: string) => {
+		navigate(`/recipe/${recipeId}`);
+	};
 
 	const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const value = e.target.value;
 		setUserText(value);
-	}
+	};
 
 	const lastRecipeIndex = currentPage * recipesPerPage;
 	const firstRecipeIndex = lastRecipeIndex - recipesPerPage;
@@ -41,7 +48,7 @@ export default function RecipeList({ foodByCategory }: RecipeListProps) {
 			}
 			return 0;
 		})
-	const currentCountry = filteredRepice.slice(firstRecipeIndex, lastRecipeIndex);
+	const currentRecipe = filteredRepice.slice(firstRecipeIndex, lastRecipeIndex);
 	const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
 
@@ -53,9 +60,9 @@ export default function RecipeList({ foodByCategory }: RecipeListProps) {
 				setUserSort={setUserSort}
 			/>
 			<ul className='recipe-list'>
-				{currentCountry && currentCountry.length > 0 ? (
-					currentCountry.map(meal => (
-						<li key={meal.idMeal} className='recipe-item'>
+				{currentRecipe && currentRecipe.length > 0 ? (
+					currentRecipe.map(meal => (
+						<li key={meal.idMeal} data-recipe-id={meal.idMeal} className='recipe-item' onClick={() => handleRecipeClick(meal.idMeal)}>
 							<img className='recipe-img' src={meal.strMealThumb} alt="Meal Image" />
 							<p className='recipe-title'>{meal.strMeal}</p>
 						</li>
