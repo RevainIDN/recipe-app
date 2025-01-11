@@ -71,12 +71,17 @@ export default function RecipeList({ foodByCategory }: RecipeListProps) {
 					<div className='not-found-meals'>Categories were not found</div>
 				)}
 			</ul>
-			<Pagination
-				currentPage={currentPage}
-				recipesPerPage={recipesPerPage}
-				filteredRepice={filteredRepice}
-				paginate={paginate}
-			/>
+			{currentRecipe.length >= 9 ? (
+				<Pagination
+					currentPage={currentPage}
+					recipesPerPage={recipesPerPage}
+					filteredRepice={filteredRepice}
+					paginate={paginate}
+				/>
+			) : (
+				null
+			)}
+
 		</div>
 	)
 }
