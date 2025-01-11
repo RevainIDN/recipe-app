@@ -23,13 +23,10 @@ export default function Filter({ handleInput, userSort, setUserSort }: FilterPro
 			<div className='recipe-filters-cont'>
 				<div className='recipe-input-cont'>
 					<input className='recipe-input' type="text" placeholder='Search recipes and more...' onChange={handleInput} />
-					<img className='recipe-input-img' src="Search.svg" alt="Search" />
 				</div>
 				<div className='recipe-dropdown-cont' onClick={handleClickDropdownList}>
 					<button className='recipe-btn'>Sort by: <strong>{userSort}</strong></button>
-					<img className='recipe-btn-img' src="Expand_down.svg" alt="Arrow down" />
 					<ul className='dropdown-list' style={{ display: isDropdownClicked ? 'flex' : 'none' }}>
-						<li className='dropdown-item' onClick={handleClickDropdownBtn}>All</li>
 						<li className='dropdown-item' onClick={handleClickDropdownBtn}>Name</li>
 						<li className='dropdown-item' onClick={handleClickDropdownBtn}>Id</li>
 					</ul>
