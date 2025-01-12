@@ -17,6 +17,7 @@
 	background-color: #394150;
 	padding: 8px 8px 0 8px;
 	border-radius: 12px;
+	min-height: 280px;
 }
 
 .recipe-img {
