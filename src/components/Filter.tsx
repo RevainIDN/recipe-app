@@ -3,11 +3,13 @@ import { useState } from 'react'
 
 interface FilterProps {
 	handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void,
+	handleClearInput: () => void,
+	userText: string,
 	userSort: string | null,
 	setUserSort: React.Dispatch<React.SetStateAction<string | null>>,
 }
 
-export default function Filter({ handleInput, userSort, setUserSort }: FilterProps) {
+export default function Filter({ handleInput, handleClearInput, userText, userSort, setUserSort }: FilterProps) {
 	const [isDropdownClicked, setIsDropdownClicked] = useState<boolean>(false);
 
 	const handleClickDropdownList = () => {
@@ -22,7 +24,8 @@ export default function Filter({ handleInput, userSort, setUserSort }: FilterPro
 		<>
 			<div className='recipe-filters-cont'>
 				<div className='recipe-input-cont'>
-					<input className='recipe-input' type="text" placeholder='Search recipes and more...' onChange={handleInput} />
+					<input className='recipe-input' type="text" value={userText} maxLength={40} placeholder='Search recipes and more...' onChange={handleInput} />
+					{userText.length >= 1 && <button className='recipe-cross' onClick={handleClearInput}></button>}
 				</div>
 				<div className='recipe-dropdown-cont' onClick={handleClickDropdownList}>
 					<button className='recipe-btn'>Sort by: <strong>{userSort}</strong></button>

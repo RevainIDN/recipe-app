@@ -26,6 +26,10 @@ export default function RecipeList({ foodByCategory }: RecipeListProps) {
 		setUserText(value);
 	};
 
+	const handleClearInput = () => {
+		setUserText('');
+	};
+
 	useEffect(() => {
 		const updateRecipesPerPage = () => {
 			const width = window.innerWidth;
@@ -68,6 +72,8 @@ export default function RecipeList({ foodByCategory }: RecipeListProps) {
 		<div className='recipe-cont'>
 			<Filter
 				handleInput={handleInput}
+				handleClearInput={handleClearInput}
+				userText={userText}
 				userSort={userSort}
 				setUserSort={setUserSort}
 			/>
