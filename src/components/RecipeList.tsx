@@ -43,11 +43,10 @@ export default function RecipeList({ foodByCategory }: RecipeListProps) {
 		return () => window.removeEventListener('resize', updateRecipesPerPage);
 	}, []);
 
-	const lastRecipeIndex = currentPage * recipesPerPage;
-	const firstRecipeIndex = lastRecipeIndex - recipesPerPage;
 	if (!foodByCategory?.meals || foodByCategory.meals.length === 0) {
 		return <p>No recipes available.</p>;
 	}
+
 	const filteredRecipe = [...foodByCategory.meals]
 		.filter((repice) => {
 			const matchesText = repice.strMeal.toLowerCase().includes(userText.toLowerCase());
@@ -65,6 +64,9 @@ export default function RecipeList({ foodByCategory }: RecipeListProps) {
 			}
 			return 0;
 		})
+
+	const lastRecipeIndex = currentPage * recipesPerPage;
+	const firstRecipeIndex = lastRecipeIndex - recipesPerPage;
 	const currentRecipe = filteredRecipe.slice(firstRecipeIndex, lastRecipeIndex);
 	const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
